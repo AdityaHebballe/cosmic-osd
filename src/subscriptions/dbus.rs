@@ -63,7 +63,6 @@ pub fn subscription() -> iced::Subscription<Event> {
                         let _ = output
                             .send(Event::Error("create system connection", err))
                             .await;
-                        return;
                     }
                 }
 
