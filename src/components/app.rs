@@ -611,6 +611,11 @@ impl cosmic::Application for App {
                     dbus::Event::SystemConnection(connection) => {
                         self.system_connection = Some(connection)
                     }
+                    dbus::Event::ExternalBrightness(brightness) => {
+                        return self.create_indicator(
+                            osd_indicator::Params::DisplayBrightnessExact(brightness),
+                        );
+                    }
                     dbus::Event::Error(context, err) => {
                         log::error!("Failed to {}: {}", context, err);
                     }
